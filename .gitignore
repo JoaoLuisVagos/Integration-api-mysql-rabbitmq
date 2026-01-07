@@ -1,0 +1,13 @@
+node_modules/
+.env
+.DS_Store
+logs/
+npm-debug.log
+yarn-error.log
+coverage/
+dist/
+build/
+.vscode/
+.idea/
+*.log
+*.env
