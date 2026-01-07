@@ -32,3 +32,18 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
+
+  worker:
+    build: .
+    depends_on:
+      - mysql
+      - rabbitmq
+    environment:
+      - DB_HOST=mysql
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_NAME=integration
+      - RABBITMQ_URL=amqp://rabbitmq
+    command: node src/workers/orderConsumer.js
+    volumes:
+      - .:/app
